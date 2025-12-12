@@ -6,54 +6,53 @@
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 18:20:33 by sjdia             #+#    #+#             */
-/*   Updated: 2025/12/09 18:20:34 by sjdia            ###   ########.fr       */
+/*   Updated: 2025/12/11 09:52:34 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../push_swap.h"
 
-void    RA(t_list **A)
+void	ra(t_stack *A)
 {
-    t_list *tmp;
-    t_list *last;
+	t_list	*first;
+	t_list	*last;
 
-    if (!A || !(*A))
-        return;
-    tmp = *A;
-    last = *A;
-    *A = (*A)->next;
-    (*A)->prev = NULL;
-    while(last->next)
-        last = last->next;
-    last->next = tmp;
-    tmp->prev = last;
-    tmp->next = NULL;
-    printf("ra\n");
+	if (!A->head || !A->head->next)
+		return ;
+	first = A->head;
+	A->head = first->next;
+	A->head->prev = NULL;
+	last = A->head;
+	while (last->next)
+		last = last->next;
+	last->next = first;
+	first->prev = last;
+	first->next = NULL;
+	printf("ra\n");
 }
 
-void    RB(t_list **B)
+void	rb(t_stack *B)
 {
-    t_list *tmp;
-    t_list *last;
+	t_list	*first;
+	t_list	*last;
 
-    if (!B || !(*B))
-        return;
-    tmp = *B;
-    last = *B;
-    *B = (*B)->next;
-    (*B)->prev = NULL;
-    while(last->next)
-        last = last->next;
-    last->next = tmp;
-    tmp->prev = last;
-    tmp->next = NULL;
-    printf("rb\n");
+	if (!B->head || !B->head->next)
+		return ;
+	first = B->head;
+	B->head = first->next;
+	B->head->prev = NULL;
+	last = B->head;
+	while (last->next)
+		last = last->next;
+	last->next = first;
+	first->prev = last;
+	first->next = NULL;
+	printf("ra\n");
 }
 
-void    RR(t_list **A, t_list **B)
+void	rr(t_stack *A, t_stack *B)
 {
-    RA(A);
-    RB(B);
-    printf("rr\n");
+	ra(A);
+	rb(B);
+	printf("rr\n");
 }

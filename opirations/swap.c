@@ -6,50 +6,49 @@
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 18:20:57 by sjdia             #+#    #+#             */
-/*   Updated: 2025/12/09 18:20:58 by sjdia            ###   ########.fr       */
+/*   Updated: 2025/12/11 09:53:36 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../push_swap.h"
 
-void SA(t_list **A)
+void	sa(t_stack *A)
 {
-    t_list *first;
-    t_list *second;
+	t_list	*first;
+	t_list	*second;
 
-    if (!A || !(*A) || !(*A)->next)
-        return;
-    first = *A;
-    second = (*A)->next;
-    first->next = second->next;
-    second->next = first;
-    second->prev = NULL;
-    first->prev = second;
-    *A = second;
-    printf("sa\n");
+	if (!A || !(A->head) || !A->head->next)
+		return ;
+	first = A->head;
+	second = (A)->head->next;
+	first->next = second->next;
+	second->next = first;
+	second->prev = NULL;
+	first->prev = second;
+	A->head = second;
+	printf("sa\n");
 }
 
-void SB(t_list **B)
+void	sb(t_stack *B)
 {
-    t_list *first;
-    t_list *second;
+	t_list	*first;
+	t_list	*second;
 
-    if (!B || !(*B) || !(*B)->next)
-        return;
-    first = *B;
-    second = (*B)->next;
-    first->next = second->next;
-    second->next = first;
-    second->prev = NULL;
-    first->prev = second;
-    *B = second;
-    printf("sb\n");
+	if (!B || !(B->head) || !B->head->next)
+		return ;
+	first = B->head;
+	second = (B)->head->next;
+	first->next = second->next;
+	second->next = first;
+	second->prev = NULL;
+	first->prev = second;
+	B->head = second;
+	printf("sb\n");
 }
 
-void    SS(t_list **A, t_list **B)
+void	ss(t_stack *A, t_stack*B)
 {
-    SA(A);
-    SB(B);
-    printf("ss\n");
+	sa(A);
+	sb(B);
+	printf("ss\n");
 }

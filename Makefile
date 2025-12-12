@@ -15,7 +15,7 @@ CFALGES = -Wall -Wextra -Werror
 
 SRCS = push_swap.c parssing/push_swap_utils.c parssing/parssing.c \
 		parssing/push_swap_utils_2.c opirations/swap.c opirations/push.c opirations/rotate.c \
-		opirations/reverse.c
+		opirations/reverse.c sort.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -38,3 +38,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re bonus
+
+# -fsanitize=address
