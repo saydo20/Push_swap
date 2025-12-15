@@ -88,9 +88,25 @@ void	sort_5(t_stack *A, t_stack *B)
 	pa(A, B);
 }
 
+void	sort_large(t_stack *A, t_stack *B)
+{
+	int		chunk_size;
+
+
+	if(A->size <= 100)
+		chunk_size = 15;
+	else 
+		chunk_size = 45;
+}
+
 void	sort(t_stack *A, t_stack *B)
 {
 	
-	while (A->size > 3)
-		pb(A, B);
+	if(A->size == 3)
+		sort_3(A);
+	else if (A->size == 5)
+		sort_5(A, B);
+	else 
+		sort_large(A, B);
+		
 }

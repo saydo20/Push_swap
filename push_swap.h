@@ -22,6 +22,7 @@ typedef struct s_list
 	struct s_list	*next;
 	struct s_list	*prev;
 	int				*content;
+	int				rank;
 }	t_list;
 
 typedef struct s_stack {
