@@ -6,7 +6,7 @@
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 18:20:01 by sjdia             #+#    #+#             */
-/*   Updated: 2025/12/11 09:47:52 by sjdia            ###   ########.fr       */
+/*   Updated: 2025/12/17 14:58:46 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	pa(t_stack *A, t_stack *B)
 	A->head = tmp;
 	A->size++;
 	B->size--;
-	printf("pa\n");
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_stack *A, t_stack *B)
@@ -49,5 +49,5 @@ void	pb(t_stack *A, t_stack *B)
 	B->head = tmp;
 	A->size--;
 	B->size++;
-	printf("pb\n");
+	write(1, "pb\n", 3);
 }

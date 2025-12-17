@@ -51,7 +51,7 @@ char	*mft_strdup(char *s, size_t start, size_t end)
 	return (ptr);
 }
 
-void	*free_split(size_t index, char **s)
+void	*free_split(int index, char **s)
 {
 	while (index > 0)
 	{

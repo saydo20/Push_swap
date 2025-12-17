@@ -6,7 +6,7 @@
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 18:19:46 by sjdia             #+#    #+#             */
-/*   Updated: 2025/12/11 11:17:58 by sjdia            ###   ########.fr       */
+/*   Updated: 2025/12/17 14:56:33 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,26 @@ typedef struct s_stack {
 }t_stack;
 
 t_list	*creat_node(int a);
-int		ft_atoi(char *str);
-int		distance_to_value(t_stack *stack, int index);
+int		ft_atoi(char *str, t_stack *stack);
+int		stack_size(t_stack *stack);
 int		check_duplicates(t_stack *stack);
 int		stack_size(t_stack *stack);
+int		find_max(t_stack *stack);
+int		find_pos_max(t_stack *stack);
+int		find_smallest_in_a(t_stack *A);
 char	**ft_split(char const *s, char c);
-char	**pars_list(char *str);
-char	**pars_list_2(int ac, char **av, t_list *stack);
+char	**pars_list(char *str, t_stack *stack);
 void	sort_3(t_stack *A);
 void	sort_5(t_stack *A, t_stack *B);
+void	stack_clear(t_stack *stack);
 void	sort(t_stack *A, t_stack *B);
 void	stack_clear(t_stack *lst);
 void	add_node_back(t_stack *stack, t_list *node);
-void	print_stack(t_stack *stack);
+void	sort_large(t_stack *A, t_stack *B);
+void	fill_ptr(char **av, t_stack *A);
+void	full_exit(t_stack *stack);
+void	*free_split(int index, char **s);
+void	push_the_smallest_to_b(t_stack *A, t_stack *B, int pos);
 //
 void	pa(t_stack *A, t_stack *B);
 void	pb(t_stack *A, t_stack *B);

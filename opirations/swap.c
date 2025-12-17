@@ -26,7 +26,7 @@ void	sa(t_stack *A)
 	second->prev = NULL;
 	first->prev = second;
 	A->head = second;
-	printf("sa\n");
+	write(1, "sa\n", 3);
 }
 
 void	sb(t_stack *B)
@@ -43,12 +43,12 @@ void	sb(t_stack *B)
 	second->prev = NULL;
 	first->prev = second;
 	B->head = second;
-	printf("sb\n");
+	write(1, "pb\n", 3);
 }
 
 void	ss(t_stack *A, t_stack*B)
 {
 	sa(A);
 	sb(B);
-	printf("ss\n");
+	write(1, "ss\n", 3);
 }

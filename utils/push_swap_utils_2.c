@@ -12,26 +12,23 @@
 
 #include "../push_swap.h"
 
-int	ft_atoi_two(char *str, int i, int sign, long result)
+int	ft_atoi_two(char *str, int i, int sign, t_stack *stack)
 {
+	long	result;
+
+	result = 0;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		result = (result * 10) + (str[i++] - '0');
 		if (result > 2147483647 && sign == 1)
-		{
-			printf("error!\n");
-			exit(1);
-		}
+			full_exit(stack);
 		else if (result > 2147483648 && sign == -1)
-		{
-			printf("error!\n");
-			exit(1);
-		}
+			full_exit(stack);
 	}
 	return (result);
 }
 
-int	ft_atoi(char *str)
+int	ft_atoi(char *str, t_stack *stack)
 {
 	int		sign;
 	int		i;
@@ -48,7 +45,7 @@ int	ft_atoi(char *str)
 			sign = -1;
 		i++;
 	}
-	result = ft_atoi_two(str, i, sign, result);
+	result = ft_atoi_two(str, i, sign, stack);
 	return (result * sign);
 }
 
@@ -64,33 +61,12 @@ int	check_duplicates(t_stack *stack)
 		while (runner)
 		{
 			if (*runner->content == *current->content)
-			{
-				printf("error!\n");
-				stack_clear(stack);
-				exit(1);
-			}
+				full_exit(stack);
 			runner = runner->next;
 		}
 		current = current->next;
 	}
 	return (1);
-}
-
-int	distance_to_value(t_stack *stack, int index)
-{
-	t_list	*tmp;
-	int		i;
-
-	tmp = stack->head;
-	i = 0;
-	while (tmp)
-	{
-		if (*(int *)tmp->content == index)
-			return (i);
-		tmp = tmp->next;
-		i++;
-	}
-	return (-1);
 }
 
 void	stack_clear(t_stack *stack)
@@ -107,4 +83,26 @@ void	stack_clear(t_stack *stack)
 		stack->head = tmp;
 	}
 	stack->size = 0;
+}
+
+void	sort_3(t_stack *A)
+{
+	int	a;
+	int	b;
+	int	c;
+
+	a = *(A->head->content);
+	b = *(A->head->next->content);
+	c = *(A->head->next->next->content);
+	if (a > b && a > c)
+		ra(A);
+	a = *(A->head->content);
+	b = *(A->head->next->content);
+	c = *(A->head->next->next->content);
+	if (b > a && b > c)
+		rra(A);
+	a = *(A->head->content);
+	b = *(A->head->next->content);
+	if (a > b)
+		sa(A);
 }

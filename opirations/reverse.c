@@ -29,7 +29,7 @@ void	rra(t_stack *A)
 	A->head = last;
 	last->next = tmp;
 	last->prev = NULL;
-	printf("rra\n");
+	write(1, "rra\n", 4);
 }
 
 void	rrb(t_stack *B)
@@ -49,12 +49,12 @@ void	rrb(t_stack *B)
 	B->head = last;
 	last->next = tmp;
 	last->prev = NULL;
-	printf("rrb\n");
+	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack *A, t_stack *B)
 {
 	rrb(B);
 	rra(A);
-	printf("rrr\n");
+	write(1, "rrr\n", 4);
 }
