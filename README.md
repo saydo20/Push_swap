@@ -107,14 +107,22 @@ Errors are displayed as `Error\n` on standard error output.
 push_swap/
 ├── Makefile
 ├── README.md
-├── includes/
-│   └── push_swap.h
-├── srcs/
-│   ├── main.c
-│   ├── operations/
-│   ├── parsing/
-│   ├── sorting/
-│   └── utils/
+├── push_swap.h
+├── push_swap.c
+├── checker_linux
+├── operations/
+│   ├── push.c
+│   ├── reverse.c
+│   ├── rotate.c
+│   └── swap.c
+├── parsing/
+│   └── parsing.c
+└── utils/
+    ├── push_swap_utils_2.c
+    ├── push_swap_utils_3.c
+    ├── push_swap_utils_4.c
+    ├── push_swap_utils.c
+    └── sort.c
 ```
 
 ## Resources
