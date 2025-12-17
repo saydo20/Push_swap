@@ -47,7 +47,7 @@ void	rb(t_stack *B)
 	last->next = first;
 	first->prev = last;
 	first->next = NULL;
-	printf("ra\n");
+	printf("rb\n");
 }
 
 void	rr(t_stack *A, t_stack *B)

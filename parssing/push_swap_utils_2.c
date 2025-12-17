@@ -65,7 +65,7 @@ int	check_duplicates(t_stack *stack)
 		{
 			if (*runner->content == *current->content)
 			{
-				printf("error!");
+				printf("error!\n");
 				stack_clear(stack);
 				exit(1);
 			}

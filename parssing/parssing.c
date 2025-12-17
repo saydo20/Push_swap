@@ -29,7 +29,7 @@ char	**pars_list(char *str)
 				j++;
 			else if ((ptr[i][j] == '-' || ptr[i][j] == '+') &&
 				(ptr[i][j + 1] >= '0' && ptr[i][j + 1] <= '9'))
-				j++;
+				j+=2;
 			else
 			{
 				printf("error!\n");

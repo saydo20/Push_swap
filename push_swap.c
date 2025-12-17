@@ -55,7 +55,7 @@ void	print_stack(t_stack *stack)
 	tmp = stack->head;
 	while (tmp)
 	{
-		printf("%d => ", *tmp->content);
+		printf("%d =>", *tmp->content);
 		tmp = tmp->next;
 	}
 	printf("\n");
@@ -88,23 +88,19 @@ t_list *find_min(t_stack *stack)
     int    found_first;
 
     current = stack->head;
-    min_node = NULL;
     found_first = 0;
-    while (current != NULL)
+    while (current )
     {
-        if (current->rank == -1)
+        if (!found_first && current->rank == -1)
         {
-            if (!found_first)
-            {
-                min_node = current;
-                min_value = *current->content;
-                found_first = 1;
-            }
-            else if (*current->content < min_value)
-            {
-                min_node = current;
-                min_value = *current->content;
-            }
+            min_node = current;
+            min_value = *current->content;
+            found_first = 1;
+        }
+        else if (*current->content < min_value && current->rank == -1)
+        {
+            min_node = current;
+            min_value = *current->content;
         }
         current = current->next;
     }
@@ -148,7 +144,7 @@ int	main(int ac, char **av)
 		i = 0;
 		while (ptr[i])
 		{
-			add_node_back(&a, creat_node(ft_atoi(ptr[i])));
+			add_node_back(&a, creat_node(ft_atoi(ptr[i])));//null
 			free(ptr[i]);
 			i++;
 		}
@@ -156,8 +152,7 @@ int	main(int ac, char **av)
 		j++;
 	}
 	check_duplicates(&a);
-	// sort(&a, &b);
 	assign_index(&a);
-	printf("%d\n\n", a.head->rank);
-    print_stack(&a);
+	sort(&a, &b);
+	// print_stack(&a);
 }
