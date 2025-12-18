@@ -40,7 +40,7 @@ void	put_chunk(t_stack *A, t_stack *B, int start, int end)
 		{
 			while (tmp->rank != A->head->rank)
 			{
-				if (find_pos(A, *tmp->content) <= A->size / 2)
+				if (find_pos(A, *tmp->content) < A->size / 2)
 					ra(A);
 				else
 					rra(A);
@@ -80,12 +80,11 @@ void	sort_large(t_stack *A, t_stack *B)
 	int		chunk_size;
 	int		min;
 	int		max;
-	int		pos;
 
 	if (A->size <= 100)
-		chunk_size = 16;
+		chunk_size = A->size / 5;
 	else
-		chunk_size = 45;
+		chunk_size = A->size / 11;
 	min = 0;
 	max = chunk_size;
 	while (A->head)
