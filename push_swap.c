@@ -102,5 +102,6 @@ int	main(int ac, char **av)
 	check_duplicates(&a);
 	assign_index(&a);
 	sort(&a, &b);
+	stack_clear(&a);
 	return (0);
 }

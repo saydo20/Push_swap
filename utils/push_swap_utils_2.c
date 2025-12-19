@@ -21,9 +21,13 @@ int	ft_atoi_two(char *str, int i, int sign, t_stack *stack)
 	{
 		result = (result * 10) + (str[i++] - '0');
 		if (result > 2147483647 && sign == 1)
+		{
 			full_exit(stack);
+		}
 		else if (result > 2147483648 && sign == -1)
+		{
 			full_exit(stack);
+		}
 	}
 	return (result);
 }

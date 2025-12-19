@@ -6,7 +6,7 @@
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:02:59 by sjdia             #+#    #+#             */
-/*   Updated: 2025/12/17 13:27:48 by sjdia            ###   ########.fr       */
+/*   Updated: 2025/12/19 11:24:46 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,31 @@ void	full_exit(t_stack *stack)
 	write(1, "Error!\n", 7);
 	stack_clear(stack);
 	exit(1);
+}
+
+int	is_valid_int(char *str)
+{
+	int		i;
+	int		sign;
+	long	result;
+
+	i = 0;
+	sign = 1;
+	result = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = (result * 10) + (str[i++] - '0');
+		if ((sign == 1 && result > 2147483647)
+			|| (sign == -1 && result > 2147483648))
+			return (0);
+	}
+	return (1);
 }

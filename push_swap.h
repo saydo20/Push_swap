@@ -6,7 +6,7 @@
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 18:19:46 by sjdia             #+#    #+#             */
-/*   Updated: 2025/12/17 14:56:33 by sjdia            ###   ########.fr       */
+/*   Updated: 2025/12/19 11:23:16 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ int		stack_size(t_stack *stack);
 int		find_max(t_stack *stack);
 int		find_pos_max(t_stack *stack);
 int		find_smallest_in_a(t_stack *A);
+int		is_valid_int(char *str);
 char	**ft_split(char const *s, char c);
-char	**pars_list(char *str, t_stack *stack);
+char	**pars_list(char **ptr, t_stack *stack);
 void	sort_3(t_stack *A);
 void	sort_5(t_stack *A, t_stack *B);
 void	stack_clear(t_stack *stack);

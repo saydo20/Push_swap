@@ -6,7 +6,7 @@
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 16:43:03 by sjdia             #+#    #+#             */
-/*   Updated: 2025/12/17 14:59:06 by sjdia            ###   ########.fr       */
+/*   Updated: 2025/12/19 11:27:53 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,33 +29,7 @@ int	find_pos(t_stack *stack, int number)
 	return (pos);
 }
 
-void	put_chunk(t_stack *A, t_stack *B, int start, int end)
-{
-	t_list	*tmp;
-
-	tmp = A->head;
-	while (tmp)
-	{
-		if (tmp->rank >= start && tmp->rank < end)
-		{
-			while (tmp->rank != A->head->rank)
-			{
-				if (find_pos(A, *tmp->content) < A->size / 2)
-					ra(A);
-				else
-					rra(A);
-			}
-			pb(A, B);
-			if (B->head->rank <= (start + end) / 2)
-				rb(B);
-			tmp = A->head;
-		}
-		else
-			tmp = tmp->next;
-	}
-}
-
-void	push_back_to_b(t_stack *A, t_stack *B)
+void	push_back_to_a(t_stack *A, t_stack *B)
 {
 	int		max;
 	int		pos;
@@ -75,23 +49,41 @@ void	push_back_to_b(t_stack *A, t_stack *B)
 	}
 }
 
+void	put_chunk(t_stack *A, t_stack *B, int *current_idx, int range)
+{
+	int	size;
+
+	size = A->size;
+	while (size > 0)
+	{
+		if (A->head->rank <= *current_idx)
+		{
+			pb(A, B);
+			(*current_idx)++;
+			size--;
+		}
+		else if (A->head->rank <= *current_idx + range)
+		{
+			pb(A, B);
+			rb(B);
+			(*current_idx)++;
+			size--;
+		}
+		else
+			ra(A);
+	}
+}
+
 void	sort_large(t_stack *A, t_stack *B)
 {
-	int		chunk_size;
-	int		min;
-	int		max;
+	int	range;
+	int	current_idx;
 
 	if (A->size <= 100)
-		chunk_size = A->size / 5;
+		range = 15;
 	else
-		chunk_size = A->size / 11;
-	min = 0;
-	max = chunk_size;
-	while (A->head)
-	{
-		put_chunk(A, B, min, max);
-		min += chunk_size;
-		max += chunk_size;
-	}
-	push_back_to_b(A, B);
+		range = 30;
+	current_idx = 0;
+	put_chunk(A, B, &current_idx, range);
+	push_back_to_a(A, B);
 }

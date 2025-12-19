@@ -130,7 +130,6 @@ push_swap/
 ### Documentation & Tutorials
 - [Push_swap: The least amount of moves with two stacks](https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a) - Excellent overview of various algorithms
 - [Push_swap Visualizer](https://github.com/o-reo/push_swap_visualizer) - Tool to visualize the sorting process
-- [Algorithm Complexity](https://www.bigocheatsheet.com/) - Big O notation reference
 
 ### AI Usage
 AI (ChatGPT/Claude) was used in this project for:

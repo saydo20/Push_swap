@@ -6,20 +6,18 @@
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 18:18:28 by sjdia             #+#    #+#             */
-/*   Updated: 2025/12/17 16:21:58 by sjdia            ###   ########.fr       */
+/*   Updated: 2025/12/19 11:23:55 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-char	**pars_list(char *str, t_stack *stack)
+char	**pars_list(char **ptr, t_stack *stack)
 {
-	char	**ptr;
 	int		i;
 	int		j;
 
 	i = 0;
-	ptr = ft_split(str, ' ');
 	while (ptr[i])
 	{
 		j = 0;
@@ -29,7 +27,7 @@ char	**pars_list(char *str, t_stack *stack)
 				j++;
 			else if ((ptr[i][j] == '-' || ptr[i][j] == '+') &&
 				(ptr[i][j + 1] >= '0' && ptr[i][j + 1] <= '9'))
-				j += 2;
+				j++;
 			else
 			{
 				free_split(i, ptr);
@@ -41,6 +39,17 @@ char	**pars_list(char *str, t_stack *stack)
 	return (ptr);
 }
 
+void	free_ptr(char **ptr, int i, t_stack *A)
+{
+	while (ptr[i])
+	{
+		free(ptr[i]);
+		i++;
+	}
+	free(ptr);
+	full_exit(A);
+}
+
 void	fill_ptr(char **av, t_stack *A)
 {
 	int		i;
@@ -50,10 +59,17 @@ void	fill_ptr(char **av, t_stack *A)
 	j = 1;
 	while (av[j])
 	{
-		ptr = pars_list(av[j], A);
+		if (! av[j] || av[j][0] == '\0')
+			full_exit(A);
+		ptr = ft_split(av[j], ' ');
+		if (!ptr)
+			full_exit(A);
+		ptr = pars_list(ptr, A);
 		i = 0;
 		while (ptr[i])
 		{
+			if (!is_valid_int(ptr[i]))
+				free_ptr(ptr, i, A);
 			add_node_back(A, creat_node(ft_atoi(ptr[i], A)));
 			free(ptr[i]);
 			i++;

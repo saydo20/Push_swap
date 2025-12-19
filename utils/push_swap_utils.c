@@ -6,7 +6,7 @@
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 18:19:14 by sjdia             #+#    #+#             */
-/*   Updated: 2025/12/11 09:57:10 by sjdia            ###   ########.fr       */
+/*   Updated: 2025/12/19 11:24:24 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,13 @@ char	*mft_strdup(char *s, size_t start, size_t end)
 
 void	*free_split(int index, char **s)
 {
-	while (index > 0)
+	int		j;
+
+	j = 0;
+	while (j <= index)
 	{
-		free(s[index]);
-		index--;
+		free(s[j]);
+		j++;
 	}
 	free(s);
 	return (NULL);
