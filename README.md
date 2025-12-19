@@ -100,7 +100,6 @@ The program handles the following error cases:
 
 Errors are displayed as `Error\n` on standard error output.
 
-
 ## Project Structure
 
 ```
