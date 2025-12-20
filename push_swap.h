@@ -33,8 +33,6 @@ typedef struct s_stack {
 t_list	*creat_node(int a);
 int		ft_atoi(char *str, t_stack *stack);
 int		stack_size(t_stack *stack);
-int		check_duplicates(t_stack *stack);
-int		stack_size(t_stack *stack);
 int		find_max(t_stack *stack);
 int		find_pos_max(t_stack *stack);
 int		find_smallest_in_a(t_stack *A);
@@ -48,6 +46,7 @@ void	sort(t_stack *A, t_stack *B);
 void	stack_clear(t_stack *lst);
 void	add_node_back(t_stack *stack, t_list *node);
 void	sort_large(t_stack *A, t_stack *B);
+void	check_duplicates(t_stack *stack);
 void	fill_ptr(char **av, t_stack *A);
 void	full_exit(t_stack *stack);
 void	*free_split(int index, char **s);

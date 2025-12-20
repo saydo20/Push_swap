@@ -71,9 +71,9 @@ void	push_the_smallest_to_b(t_stack *A, t_stack *B, int pos)
 
 void	full_exit(t_stack *stack)
 {
-	write(1, "Error!\n", 7);
+	write(2, "Error!\n", 7);
 	stack_clear(stack);
-	exit(1);
+	exit(2);
 }
 
 int	is_valid_int(char *str)

@@ -72,7 +72,7 @@ void	fill_ptr(char **av, t_stack *A)
 	j = 1;
 	while (av[j])
 	{
-		if (! av[j] || av[j][0] == '\0')
+		if (!av[j] || av[j][0] == '\0')
 			full_exit(A);
 		ptr = ft_split(av[j], ' ');
 		if (!ptr)

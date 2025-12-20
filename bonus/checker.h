@@ -36,7 +36,6 @@ typedef struct s_stack {
 
 t_list	*creat_node(int a);
 int		ft_strlen(const char *s);
-int		check_duplicates(t_stack *stack);
 int		is_valid_int(char *str);
 int		count_words(const char *s, char c);
 int		ft_atoi(char *str, t_stack *stack);
@@ -54,6 +53,7 @@ char	*mft_strdup(char *s, size_t start, size_t end);
 char	**fill(char **ptr, char *s, char c);
 char	**ft_split(char const *s, char c);
 void	free_ptr(char **ptr, int i, t_stack *A);
+void	check_duplicates(t_stack *stack);
 void	fill_ptr(char **av, t_stack *A);
 void	stack_clear(t_stack *stack);
 void	full_exit(t_stack *stack);

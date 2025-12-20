@@ -53,7 +53,7 @@ int	ft_atoi(char *str, t_stack *stack)
 	return (result * sign);
 }
 
-int	check_duplicates(t_stack *stack)
+void	check_duplicates(t_stack *stack)
 {
 	t_list	*current;
 	t_list	*runner;
@@ -70,7 +70,6 @@ int	check_duplicates(t_stack *stack)
 		}
 		current = current->next;
 	}
-	return (1);
 }
 
 void	stack_clear(t_stack *stack)
