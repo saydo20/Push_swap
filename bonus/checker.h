@@ -6,7 +6,7 @@
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 16:45:46 by sjdia             #+#    #+#             */
-/*   Updated: 2025/12/19 16:45:47 by sjdia            ###   ########.fr       */
+/*   Updated: 2025/12/20 10:23:11 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
-#include <fcntl.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 2
@@ -35,7 +34,13 @@ typedef struct s_stack {
 	int		size;
 }t_stack;
 
-size_t	ft_strlen(const char *s);
+t_list	*creat_node(int a);
+int		ft_strlen(const char *s);
+int		check_duplicates(t_stack *stack);
+int		is_valid_int(char *str);
+int		count_words(const char *s, char c);
+int		ft_atoi(char *str, t_stack *stack);
+int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strdup(const char *s);
 char	*fill_join(char *ptr, const char *s1, const char *s2);
 char	*ft_strjoin(char const *s1, char const *s2);
@@ -45,21 +50,16 @@ char	*get_line(char *line);
 char	*fill_line(int fd, char *buf, char **left);
 char	*get_next_line(int fd);
 char	**pars_list(char **ptr, t_stack *stack);
-void	free_ptr(char **ptr, int i, t_stack *A);
-void	fill_ptr(char **av, t_stack *A);
-int	check_duplicates(t_stack *stack);
-void	stack_clear(t_stack *stack);
-void	full_exit(t_stack *stack);
-int	is_valid_int(char *str);
-t_list	*creat_node(int a);
-static size_t	count_words(const char *s, char c);
 char	*mft_strdup(char *s, size_t start, size_t end);
-void	*free_split(int index, char **s);
 char	**fill(char **ptr, char *s, char c);
 char	**ft_split(char const *s, char c);
+void	free_ptr(char **ptr, int i, t_stack *A);
+void	fill_ptr(char **av, t_stack *A);
+void	stack_clear(t_stack *stack);
+void	full_exit(t_stack *stack);
+void	*free_split(int index, char **s);
 void	add_node_back(t_stack *stack, t_list *node);
-int	ft_atoi(char *str, t_stack *stack);
-int		ft_strcmp(const char *s1, const char *s2);
+
 //opirations
 void	pa(t_stack *A, t_stack *B);
 void	pb(t_stack *A, t_stack *B);

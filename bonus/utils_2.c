@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils_2.c                                :+:      :+:    :+:   */
+/*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 18:18:55 by sjdia             #+#    #+#             */
-/*   Updated: 2025/12/11 10:04:11 by sjdia            ###   ########.fr       */
+/*   Updated: 2025/12/20 10:15:41 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ void	stack_clear(t_stack *stack)
 	}
 	stack->size = 0;
 }
-int		ft_strcmp(const char *s1, const char *s2)
+
+int	ft_strcmp(const char *s1, const char *s2)
 {
 	size_t	i;
 
@@ -97,24 +98,3 @@ int		ft_strcmp(const char *s1, const char *s2)
 		i++;
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
-// void	sort_3(t_stack *A)
-// {
-// 	int	a;
-// 	int	b;
-// 	int	c;
-
-// 	a = *(A->head->content);
-// 	b = *(A->head->next->content);
-// 	c = *(A->head->next->next->content);
-// 	if (a > b && a > c)
-// 		ra(A);
-// 	a = *(A->head->content);
-// 	b = *(A->head->next->content);
-// 	c = *(A->head->next->next->content);
-// 	if (b > a && b > c)
-// 		rra(A);
-// 	a = *(A->head->content);
-// 	b = *(A->head->next->content);
-// 	if (a > b)
-// 		sa(A);
-// }

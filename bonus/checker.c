@@ -6,7 +6,7 @@
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 16:10:32 by sjdia             #+#    #+#             */
-/*   Updated: 2025/12/19 16:10:33 by sjdia            ###   ########.fr       */
+/*   Updated: 2025/12/20 10:07:22 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,27 @@
 void	exec_instruction(char *line, t_stack *a, t_stack *b)
 {
 	if (ft_strcmp(line, "pa\n") == 0)
-    	pa(a, b);
+		pa(a, b);
 	else if (ft_strcmp(line, "pb\n") == 0)
-    	pb(a, b);
+		pb(a, b);
 	else if (ft_strcmp(line, "rra\n") == 0)
-    	rra(a);
+		rra(a);
 	else if (ft_strcmp(line, "rrb\n") == 0)
-    	rrb(b);
+		rrb(b);
 	else if (ft_strcmp(line, "rrr\n") == 0)
-    	rrr(a, b);
+		rrr(a, b);
 	else if (ft_strcmp(line, "sa\n") == 0)
-    	sa(a);
+		sa(a);
 	else if (ft_strcmp(line, "sb\n") == 0)
-    	sb(b);
+		sb(b);
 	else if (ft_strcmp(line, "ss\n") == 0)
-    	ss(a, b);
+		ss(a, b);
 	else if (ft_strcmp(line, "ra\n") == 0)
-    	ra(a);
+		ra(a);
 	else if (ft_strcmp(line, "rb\n") == 0)
-    	rb(b);
+		rb(b);
 	else if (ft_strcmp(line, "rr\n") == 0)
-    	rr(a, b);
+		rr(a, b);
 	else
 		return ;
 }
@@ -65,24 +65,42 @@ int	is_valid_instruction(char *str)
 	else if (ft_strcmp(str, "rr\n") == 0)
 		return (1);
 	else
-		return 0;
+		return (0);
 }
 
-int		is_sorted(t_stack *a)
+int	is_sorted(t_stack *stack)
 {
 	t_list	*tmp;
 
-	tmp = a->head;
-	while(tmp->next)
+	if (!stack || !stack->head)
+		return (1);
+	tmp = stack->head;
+	while (tmp->next)
 	{
-		if (!tmp->next)
+		if (*(tmp->content) > *(tmp->next->content))
 			return (0);
-		else if (*tmp->content < *tmp->next->content)
-			tmp = tmp->next;
-		else
-			return (0);
+		tmp = tmp->next;
 	}
 	return (1);
+}
+
+void	read_exec(t_stack *a, t_stack *b)
+{
+	char	*ptr;
+
+	ptr = get_next_line(0);
+	while (ptr)
+	{
+		if (!is_valid_instruction(ptr))
+		{
+			free(ptr);
+			full_exit(a);
+		}
+		exec_instruction(ptr, a, b);
+		free(ptr);
+		ptr = get_next_line(0);
+	}
+	free(ptr);
 }
 
 int	main(int ac, char **av)
@@ -98,25 +116,12 @@ int	main(int ac, char **av)
 		return (0);
 	fill_ptr(av, &a);
 	check_duplicates(&a);
-	char	*ptr;
-	ptr = get_next_line(0);
-	while(ptr)
-	{
-		if (!is_valid_instruction(ptr))
-		{
-			free(ptr);
-        	full_exit(&a);
-		}
-		exec_instruction(ptr, &a, &b);
-		free(ptr);
-		ptr = get_next_line(0);
-	}
-	free(ptr);
+	read_exec(&a, &b);
 	if (is_sorted(&a) && b.size == 0)
-    	write(1, "OK\n", 3);
+		write(1, "OK\n", 3);
 	else
-    	write(1, "KO\n", 3);
+		write(1, "KO\n", 3);
 	stack_clear(&a);
 	stack_clear(&b);
-    return 0;
+	return (0);
 }

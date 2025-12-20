@@ -6,16 +6,16 @@
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 18:18:28 by sjdia             #+#    #+#             */
-/*   Updated: 2025/12/19 11:23:55 by sjdia            ###   ########.fr       */
+/*   Updated: 2025/12/20 09:58:42 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-char	**pars_list(char **ptr, t_stack *stack)
+void	pars_helper(char **ptr, t_stack *stack)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (ptr[i])
@@ -36,6 +36,19 @@ char	**pars_list(char **ptr, t_stack *stack)
 		}
 		i++;
 	}
+}
+
+char	**pars_list(char **ptr, t_stack *stack)
+{
+	int		i;
+	int		j;
+
+	if (!ptr[0])
+	{
+		free(ptr);
+		full_exit(stack);
+	}
+	pars_helper(ptr, stack);
 	return (ptr);
 }
 

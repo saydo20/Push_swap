@@ -6,10 +6,10 @@
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 10:14:35 by sjdia             #+#    #+#             */
-/*   Updated: 2025/11/19 11:35:30 by sjdia            ###   ########.fr       */
+/*   Updated: 2025/12/20 10:08:33 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-     
+
 #include "checker.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -105,4 +105,3 @@ char	*get_next_line(int fd)
 	left = get_line(line);
 	return (line);
 }
-

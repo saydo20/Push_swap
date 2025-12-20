@@ -12,10 +12,10 @@
 
 #include "checker.h"
 
-static size_t	count_words(const char *s, char c)
+int	count_words(const char *s, char c)
 {
-	size_t	i;
-	size_t	counter;
+	int	i;
+	int	counter;
 
 	i = 0;
 	counter = 0;

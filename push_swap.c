@@ -6,7 +6,7 @@
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 18:19:31 by sjdia             #+#    #+#             */
-/*   Updated: 2025/12/17 14:38:59 by sjdia            ###   ########.fr       */
+/*   Updated: 2025/12/20 11:19:25 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,22 @@ void	assign_index(t_stack *stack)
 	}
 }
 
+int	is_sorted(t_stack *stack)
+{
+	t_list	*tmp;
+
+	if (!stack || !stack->head)
+		return (1);
+	tmp = stack->head;
+	while (tmp->next)
+	{
+		if (*(tmp->content) > *(tmp->next->content))
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
 int	main(int ac, char **av)
 {
 	t_stack	a;
@@ -87,6 +103,11 @@ int	main(int ac, char **av)
 		return (0);
 	fill_ptr(av, &a);
 	check_duplicates(&a);
+	if (is_sorted(&a))
+	{
+		stack_clear(&a);
+		return (0);
+	}
 	assign_index(&a);
 	sort(&a, &b);
 	stack_clear(&a);

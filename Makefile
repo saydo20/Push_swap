@@ -21,9 +21,9 @@ SRCS = push_swap.c utils/push_swap_utils.c parssing/parssing.c \
 OBJS = $(SRCS:.c=.o)
 
 bonus_SRCS = bonus/checker.c bonus/get_next_line.c bonus/get_next_line_utils.c \
-				bonus/utils.c bonus/utils_2.c bonus/utils_3.c bonus/utils_4.c \
+				bonus/utils.c bonus/utils_2.c bonus/utils_3.c bonus/opirations_bonus/rotate_bonus.c \
 				bonus/parssing_bonus.c bonus/opirations_bonus/push_bonus.c bonus/opirations_bonus/swap_bonus.c \
-				bonus/opirations_bonus/reverse_bonus.c bonus/opirations_bonus/rotate_bonus.c   
+				bonus/opirations_bonus/reverse_bonus.c   
 
 bonus_OBJS = $(bonus_SRCS:.c=.o)
 

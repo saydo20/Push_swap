@@ -1,73 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils_3.c                                :+:      :+:    :+:   */
+/*   utils_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/17 13:02:59 by sjdia             #+#    #+#             */
-/*   Updated: 2025/12/19 11:24:46 by sjdia            ###   ########.fr       */
+/*   Created: 2025/12/17 13:06:10 by sjdia             #+#    #+#             */
+/*   Updated: 2025/12/20 10:16:13 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-// int	find_smallest_in_a(t_stack *A)
-// {
-// 	t_list	*tmp;
-// 	int		min;
-// 	int		pos;
-// 	int		i;
+t_list	*creat_node(int a)
+{
+	t_list	*ptr;
+	int		*num;
 
-// 	tmp = A->head;
-// 	min = *(tmp->content);
-// 	pos = 0;
-// 	i = 0;
-// 	while (tmp)
-// 	{
-// 		if (*(tmp->content) < min)
-// 		{
-// 			min = *(tmp->content);
-// 			pos = i;
-// 		}
-// 		tmp = tmp->next;
-// 		i++;
-// 	}
-// 	return (pos);
-// }
+	ptr = malloc(sizeof(t_list));
+	if (!ptr)
+		return (NULL);
+	num = malloc(sizeof(int));
+	if (!num)
+	{
+		free(ptr);
+		return (NULL);
+	}
+	*num = a;
+	ptr->content = num;
+	ptr->next = NULL;
+	ptr->prev = NULL;
+	ptr->rank = -1;
+	return (ptr);
+}
 
-// void	sort_5(t_stack *A, t_stack *B)
-// {
-// 	int	pos;
+void	add_node_back(t_stack *stack, t_list *node)
+{
+	t_list	*tmp;
 
-// 	pos = find_smallest_in_a(A);
-// 	push_the_smallest_to_b(A, B, pos);
-// 	pos = find_smallest_in_a(A);
-// 	push_the_smallest_to_b(A, B, pos);
-// 	sort_3(A);
-// 	pa(A, B);
-// 	pa(A, B);
-// }
-
-// void	push_the_smallest_to_b(t_stack *A, t_stack *B, int pos)
-// {
-// 	int	size;
-// 	int	r;
-
-// 	size = stack_size(A);
-// 	if (pos <= size / 2)
-// 	{
-// 		while (pos-- > 0)
-// 			ra(A);
-// 	}
-// 	else
-// 	{
-// 		r = size - pos;
-// 		while (r-- > 0)
-// 			rra(A);
-// 	}
-// 	pb(A, B);
-// }
+	if (!stack->head)
+	{
+		stack->head = node;
+	}
+	else
+	{
+		tmp = stack->head;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = node;
+		node->prev = tmp;
+	}
+	stack->size++;
+}
 
 void	full_exit(t_stack *stack)
 {
