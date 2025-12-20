@@ -84,12 +84,6 @@ You can verify the output by counting the number of operations:
 ./push_swap 4 67 3 87 23 | wc -l
 ```
 
-Or test with random numbers:
-
-```bash
-ARG=$(shuf -i 0-100 -n 100 | tr '\n' ' '); ./push_swap $ARG | wc -l
-```
-
 ### Error Handling
 
 The program handles the following error cases:

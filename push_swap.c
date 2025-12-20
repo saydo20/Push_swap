@@ -12,19 +12,6 @@
 
 #include "push_swap.h"
 
-// void	print_stack(t_stack *stack)
-// {
-// 	t_list	*tmp;
-
-// 	tmp = stack->head;
-// 	while (tmp)
-// 	{
-// 		printf("%d =>", *tmp->content);
-// 		tmp = tmp->next;
-// 	}
-// 	printf("\n");
-// }
-
 void	add_node_back(t_stack *stack, t_list *node)
 {
 	t_list	*tmp;
@@ -103,5 +90,6 @@ int	main(int ac, char **av)
 	assign_index(&a);
 	sort(&a, &b);
 	stack_clear(&a);
+	stack_clear(&b);
 	return (0);
 }

@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/09 18:19:46 by sjdia             #+#    #+#             */
-/*   Updated: 2025/12/19 11:23:16 by sjdia            ###   ########.fr       */
+/*   Created: 2025/12/19 16:45:46 by sjdia             #+#    #+#             */
+/*   Updated: 2025/12/19 16:45:47 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef CHECKER_H
+# define CHECKER_H
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+#include <fcntl.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 2
+# endif
 
 typedef struct s_list
 {
@@ -30,28 +35,31 @@ typedef struct s_stack {
 	int		size;
 }t_stack;
 
-t_list	*creat_node(int a);
-int		ft_atoi(char *str, t_stack *stack);
-int		stack_size(t_stack *stack);
-int		check_duplicates(t_stack *stack);
-int		stack_size(t_stack *stack);
-int		find_max(t_stack *stack);
-int		find_pos_max(t_stack *stack);
-int		find_smallest_in_a(t_stack *A);
-int		is_valid_int(char *str);
-char	**ft_split(char const *s, char c);
+size_t	ft_strlen(const char *s);
+char	*ft_strdup(const char *s);
+char	*fill_join(char *ptr, const char *s1, const char *s2);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strchr(const char *s, int c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*get_line(char *line);
+char	*fill_line(int fd, char *buf, char **left);
+char	*get_next_line(int fd);
 char	**pars_list(char **ptr, t_stack *stack);
-void	sort_3(t_stack *A);
-void	sort_5(t_stack *A, t_stack *B);
-void	stack_clear(t_stack *stack);
-void	sort(t_stack *A, t_stack *B);
-void	stack_clear(t_stack *lst);
-void	add_node_back(t_stack *stack, t_list *node);
-void	sort_large(t_stack *A, t_stack *B);
+void	free_ptr(char **ptr, int i, t_stack *A);
 void	fill_ptr(char **av, t_stack *A);
+int	check_duplicates(t_stack *stack);
+void	stack_clear(t_stack *stack);
 void	full_exit(t_stack *stack);
+int	is_valid_int(char *str);
+t_list	*creat_node(int a);
+static size_t	count_words(const char *s, char c);
+char	*mft_strdup(char *s, size_t start, size_t end);
 void	*free_split(int index, char **s);
-void	push_the_smallest_to_b(t_stack *A, t_stack *B, int pos);
+char	**fill(char **ptr, char *s, char c);
+char	**ft_split(char const *s, char c);
+void	add_node_back(t_stack *stack, t_list *node);
+int	ft_atoi(char *str, t_stack *stack);
+int		ft_strcmp(const char *s1, const char *s2);
 //opirations
 void	pa(t_stack *A, t_stack *B);
 void	pb(t_stack *A, t_stack *B);
