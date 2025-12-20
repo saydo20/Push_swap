@@ -52,6 +52,12 @@ make
 
 This will generate the `push_swap` executable.
 
+For the bonus part (checker):
+```bash
+make bonus
+```
+This will generate the checker executable.
+
 ### Usage
 
 Run the program with a list of integers as arguments:
@@ -102,7 +108,21 @@ push_swap/
 ├── README.md
 ├── push_swap.h
 ├── push_swap.c
-├── checker_linux
+├── checker
+├── bonus/
+│   ├── checker.c
+│   ├── checker.h
+│   ├── get_next_line.c
+│   ├── get_next_line_utils.c
+│   ├── parsing_bonus.c
+│   ├── utils.c
+│   ├── utils_2.c
+│   ├── utils_3.c
+│   └── operations_bonus/
+│       ├── push_bonus.c
+│       ├── reverse_bonus.c
+│       ├── rotate_bonus.c
+│       └── swap_bonus.c
 ├── operations/
 │   ├── push.c
 │   ├── reverse.c
