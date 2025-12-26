@@ -32,19 +32,20 @@ NAME = push_swap
 all: $(NAME)
 
 $(NAME) : $(OBJS) push_swap.h
-	cc $(CFALGES) $(OBJS) -o push_swap
+	cc -fsanitize=address $(CFALGES) $(OBJS) -o push_swap
 
 bonus: $(bonus_OBJS) push_swap.h
-	cc $(CFALGES) $(bonus_OBJS) -o checker
+	cc  -fsanitize=address $(CFALGES) $(bonus_OBJS) -o checker
 
 %.o: %.c push_swap.h
-	cc $(CFLAGS) -c $< -o $@
+	cc  -fsanitize=address $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS) $(bonus_OBJS)
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f checker
 
 re: fclean all
 

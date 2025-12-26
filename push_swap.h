@@ -25,10 +25,11 @@ typedef struct s_list
 	int				rank;
 }	t_list;
 
-typedef struct s_stack {
+typedef struct s_stack
+{
 	t_list	*head;
 	int		size;
-}t_stack;
+}		t_stack;
 
 t_list	*creat_node(int a);
 int		ft_atoi(char *str, t_stack *stack);

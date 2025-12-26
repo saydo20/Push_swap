@@ -14,9 +14,14 @@
 
 void	sort(t_stack *A, t_stack *B)
 {
+	if (A->size == 2)
+	{
+		sa(A);
+		return ;
+	}
 	if (A->size == 3)
 		sort_3(A);
-	else if (A->size == 5)
+	else if (A->size == 5 || A->size == 4)
 		sort_5(A, B);
 	else
 		sort_large(A, B);

@@ -39,13 +39,19 @@ int	find_smallest_in_a(t_stack *A)
 void	sort_5(t_stack *A, t_stack *B)
 {
 	int	pos;
+	int	size;
 
-	pos = find_smallest_in_a(A);
-	push_the_smallest_to_b(A, B, pos);
+	size = A->size;
+	if(size == 5)
+	{
+		pos = find_smallest_in_a(A);
+		push_the_smallest_to_b(A, B, pos);
+	}
 	pos = find_smallest_in_a(A);
 	push_the_smallest_to_b(A, B, pos);
 	sort_3(A);
-	pa(A, B);
+	if(size == 5)
+		pa(A, B);
 	pa(A, B);
 }
 
@@ -71,9 +77,9 @@ void	push_the_smallest_to_b(t_stack *A, t_stack *B, int pos)
 
 void	full_exit(t_stack *stack)
 {
-	write(2, "Error!\n", 7);
+	write(2, "Error\n", 6);
 	stack_clear(stack);
-	exit(2);
+	exit(1);
 }
 
 int	is_valid_int(char *str)

@@ -55,9 +55,9 @@ void	add_node_back(t_stack *stack, t_list *node)
 
 void	full_exit(t_stack *stack)
 {
-	write(2, "Error!\n", 7);
+	write(2, "Error\n", 6);
 	stack_clear(stack);
-	exit(2);
+	exit(1);
 }
 
 int	is_valid_int(char *str)
