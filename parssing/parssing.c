@@ -6,7 +6,7 @@
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 18:18:28 by sjdia             #+#    #+#             */
-/*   Updated: 2025/12/27 12:34:26 by sjdia            ###   ########.fr       */
+/*   Updated: 2025/12/27 15:59:08 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ void	pars_helper(char **ptr, t_stack *stack)
 
 char	**pars_list(char **ptr, t_stack *stack)
 {
-	int		i;
-	int		j;
-
 	if (!ptr[0])
 	{
 		free(ptr);
@@ -66,11 +63,32 @@ void	free_ptr(char **ptr, int i, t_stack *A)
 	full_exit(A);
 }
 
+void	fill_stack(char **ptr, t_stack *A)
+{
+	int		i;
+	t_list	*new;
+
+	i = 0;
+	while (ptr[i])
+	{
+		if (!is_valid_int(ptr[i]))
+			free_ptr(ptr, i, A);
+		new = creat_node(ft_atoi(ptr[i], A));
+		if (!new)
+			free_ptr(ptr, i, A);
+		add_node_back(A, new);
+		free(ptr[i]);
+		i++;
+	}
+	free(ptr);
+}
+
 void	fill_ptr(char **av, t_stack *A)
 {
 	int		i;
 	int		j;
 	char	**ptr;
+	t_list	*new;
 
 	j = 1;
 	while (av[j])
@@ -81,16 +99,7 @@ void	fill_ptr(char **av, t_stack *A)
 		if (!ptr)
 			full_exit(A);
 		ptr = pars_list(ptr, A);
-		i = 0;
-		while (ptr[i])
-		{
-			if (!is_valid_int(ptr[i]))
-				free_ptr(ptr, i, A);
-			add_node_back(A, creat_node(ft_atoi(ptr[i], A)));
-			free(ptr[i]);
-			i++;
-		}
-		free(ptr);
+		fill_stack(ptr, A);
 		j++;
 	}
 }

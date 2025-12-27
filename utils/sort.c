@@ -48,7 +48,7 @@ void	push_back_to_a(t_stack *A, t_stack *B)
 		{
 			rotate_to_top(B, max);
 			pa(A, B);
-			continue ;
+			break ;
 		}
 		push_max_or_second(A, B, max);
 	}
