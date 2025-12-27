@@ -36,7 +36,7 @@ int	find_second_max(t_stack *B, int max)
 	int		found;
 
 	tmp = B->head;
-	second = 0;
+	second = -2147483648;
 	while (tmp)
 	{
 		if (*tmp->content != max)

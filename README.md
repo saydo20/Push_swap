@@ -134,6 +134,7 @@ push_swap/
     ├── push_swap_utils_2.c
     ├── push_swap_utils_3.c
     ├── push_swap_utils_4.c
+    ├── push_swap_utils5.c
     ├── push_swap_utils.c
     └── sort.c
 ```
@@ -155,7 +156,3 @@ The core implementation, algorithm adaptation, and code structure were developed
 ## Author
 
 **sjdia** - 42 Student
-
----
-
-*For questions or suggestions, feel free to reach out!*
