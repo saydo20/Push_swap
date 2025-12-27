@@ -40,6 +40,7 @@ int		is_valid_int(char *str);
 int		count_words(const char *s, char c);
 int		ft_atoi(char *str, t_stack *stack);
 int		ft_strcmp(const char *s1, const char *s2);
+int		find_pos(t_stack *stack, int number);
 char	*ft_strdup(const char *s);
 char	*fill_join(char *ptr, const char *s1, const char *s2);
 char	*ft_strjoin(char const *s1, char const *s2);

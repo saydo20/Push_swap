@@ -15,7 +15,7 @@ CFALGES = -Wall -Wextra -Werror
 
 SRCS = push_swap.c utils/push_swap_utils.c parssing/parssing.c \
 		utils/push_swap_utils_2.c opirations/swap.c opirations/push.c opirations/rotate.c \
-		opirations/reverse.c utils/push_swap_utils_4.c utils/sort.c \
+		opirations/reverse.c utils/push_swap_utils_4.c utils/sort.c utils/push_swap_utils5.c \
 		utils/push_swap_utils_3.c
 
 OBJS = $(SRCS:.c=.o)
@@ -32,13 +32,13 @@ NAME = push_swap
 all: $(NAME)
 
 $(NAME) : $(OBJS) push_swap.h
-	cc -fsanitize=address $(CFALGES) $(OBJS) -o push_swap
+	cc $(CFALGES) $(OBJS) -o push_swap
 
 bonus: $(bonus_OBJS) push_swap.h
-	cc  -fsanitize=address $(CFALGES) $(bonus_OBJS) -o checker
+	cc $(CFALGES) $(bonus_OBJS) -o checker
 
 %.o: %.c push_swap.h
-	cc  -fsanitize=address $(CFLAGS) -c $< -o $@
+	cc $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS) $(bonus_OBJS)

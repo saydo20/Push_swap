@@ -6,7 +6,7 @@
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 13:02:59 by sjdia             #+#    #+#             */
-/*   Updated: 2025/12/19 11:24:46 by sjdia            ###   ########.fr       */
+/*   Updated: 2025/12/27 12:32:38 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	sort_5(t_stack *A, t_stack *B)
 	int	size;
 
 	size = A->size;
-	if(size == 5)
+	if (size == 5)
 	{
 		pos = find_smallest_in_a(A);
 		push_the_smallest_to_b(A, B, pos);
@@ -50,7 +50,7 @@ void	sort_5(t_stack *A, t_stack *B)
 	pos = find_smallest_in_a(A);
 	push_the_smallest_to_b(A, B, pos);
 	sort_3(A);
-	if(size == 5)
+	if (size == 5)
 		pa(A, B);
 	pa(A, B);
 }

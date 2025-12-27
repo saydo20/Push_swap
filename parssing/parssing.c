@@ -6,7 +6,7 @@
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 18:18:28 by sjdia             #+#    #+#             */
-/*   Updated: 2025/12/20 09:58:42 by sjdia            ###   ########.fr       */
+/*   Updated: 2025/12/27 12:34:26 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,21 @@ void	pars_helper(char **ptr, t_stack *stack)
 	while (ptr[i])
 	{
 		j = 0;
+		if (ptr[i][j] == '+' || ptr[i][j] == '-')
+			j++;
+		if (ptr[i][j] == '\0')
+		{
+			free_split(i, ptr);
+			full_exit(stack);
+		}
 		while (ptr[i][j])
 		{
-			if (ptr[i][j] >= '0' && ptr[i][j] <= '9')
-				j++;
-			else if ((ptr[i][j] == '-' || ptr[i][j] == '+') && j != 0)
+			if (ptr[i][j] < '0' || ptr[i][j] > '9')
 			{
 				free_split(i, ptr);
 				full_exit(stack);
 			}
-			else if ((ptr[i][j] == '-' || ptr[i][j] == '+') &&
-				(ptr[i][j + 1] >= '0' && ptr[i][j + 1] <= '9'))
-				j++;
-			else
-			{
-				free_split(i, ptr);
-				full_exit(stack);
-			}
+			j++;
 		}
 		i++;
 	}

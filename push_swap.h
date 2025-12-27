@@ -6,7 +6,7 @@
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 18:19:46 by sjdia             #+#    #+#             */
-/*   Updated: 2025/12/19 11:23:16 by sjdia            ###   ########.fr       */
+/*   Updated: 2025/12/27 12:32:00 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,15 @@ typedef struct s_stack
 t_list	*creat_node(int a);
 int		ft_atoi(char *str, t_stack *stack);
 int		stack_size(t_stack *stack);
+int		find_pos(t_stack *stack, int number);
 int		find_max(t_stack *stack);
-int		find_pos_max(t_stack *stack);
 int		find_smallest_in_a(t_stack *A);
 int		is_valid_int(char *str);
+int		find_second_max(t_stack *B, int max);
 char	**ft_split(char const *s, char c);
 char	**pars_list(char **ptr, t_stack *stack);
 void	sort_3(t_stack *A);
+void	rotate_to_top(t_stack *B, int value);
 void	sort_5(t_stack *A, t_stack *B);
 void	stack_clear(t_stack *stack);
 void	sort(t_stack *A, t_stack *B);

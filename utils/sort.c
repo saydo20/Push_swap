@@ -6,46 +6,51 @@
 /*   By: sjdia <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 16:43:03 by sjdia             #+#    #+#             */
-/*   Updated: 2025/12/19 11:27:53 by sjdia            ###   ########.fr       */
+/*   Updated: 2025/12/27 12:33:30 by sjdia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	find_pos(t_stack *stack, int number)
+static void	push_max_or_second(t_stack *A, t_stack *B, int max)
 {
-	t_list	*tmp;
-	int		pos;
+	int	second;
+	int	pos_max;
+	int	pos_second;
 
-	pos = 0;
-	tmp = stack->head;
-	while (tmp)
+	second = find_second_max(B, max);
+	pos_max = find_pos(B, max);
+	pos_second = find_pos(B, second);
+	if ((pos_second <= B->size / 2 && pos_second < pos_max)
+		|| (pos_second > B->size / 2 && pos_second > pos_max))
 	{
-		if (*(tmp->content) == number)
-			break ;
-		pos++;
-		tmp = tmp->next;
+		rotate_to_top(B, second);
+		pa(A, B);
+		rotate_to_top(B, max);
+		pa(A, B);
+		sa(A);
 	}
-	return (pos);
+	else
+	{
+		rotate_to_top(B, max);
+		pa(A, B);
+	}
 }
 
 void	push_back_to_a(t_stack *A, t_stack *B)
 {
-	int		max;
-	int		pos;
+	int	max;
 
-	while (B->head)
+	while (B->size > 0)
 	{
 		max = find_max(B);
-		pos = find_pos_max(B);
-		while (*B->head->content != max)
+		if (B->size < 2)
 		{
-			if (pos <= B->size / 2)
-				rb(B);
-			else
-				rrb(B);
+			rotate_to_top(B, max);
+			pa(A, B);
+			continue ;
 		}
-		pa(A, B);
+		push_max_or_second(A, B, max);
 	}
 }
 

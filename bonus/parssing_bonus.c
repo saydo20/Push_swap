@@ -21,18 +21,21 @@ void	pars_helper(char **ptr, t_stack *stack)
 	while (ptr[i])
 	{
 		j = 0;
+		if (ptr[i][j] == '+' || ptr[i][j] == '-')
+			j++;
+		if (ptr[i][j] == '\0')
+		{
+			free_split(i, ptr);
+			full_exit(stack);
+		}
 		while (ptr[i][j])
 		{
-			if (ptr[i][j] >= '0' && ptr[i][j] <= '9')
-				j++;
-			else if ((ptr[i][j] == '-' || ptr[i][j] == '+') &&
-				(ptr[i][j + 1] >= '0' && ptr[i][j + 1] <= '9'))
-				j++;
-			else
+			if (ptr[i][j] < '0' || ptr[i][j] > '9')
 			{
 				free_split(i, ptr);
 				full_exit(stack);
 			}
+			j++;
 		}
 		i++;
 	}
