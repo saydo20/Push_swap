@@ -58,7 +58,7 @@ void	check_duplicates(t_stack *stack);
 void	fill_ptr(char **av, t_stack *A);
 void	stack_clear(t_stack *stack);
 void	full_exit(t_stack *stack);
-void	*free_split(int index, char **s);
+void	free_split(char **ptr);
 void	add_node_back(t_stack *stack, t_list *node);
 
 //opirations

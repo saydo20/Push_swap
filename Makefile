@@ -34,7 +34,7 @@ all: $(NAME)
 $(NAME) : $(OBJS) push_swap.h
 	cc $(CFALGES) $(OBJS) -o push_swap
 
-bonus: $(bonus_OBJS) push_swap.h
+bonus: $(bonus_OBJS) bonus/checker.h
 	cc $(CFALGES) $(bonus_OBJS) -o checker
 
 %.o: %.c push_swap.h

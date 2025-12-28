@@ -51,18 +51,19 @@ char	*mft_strdup(char *s, size_t start, size_t end)
 	return (ptr);
 }
 
-void	*free_split(int index, char **s)
+void	free_split(char **ptr)
 {
-	int		j;
+	int	i;
 
-	j = 0;
-	while (j <= index)
+	if (!ptr)
+		return;
+	i = 0;
+	while (ptr[i])
 	{
-		free(s[j]);
-		j++;
+		free(ptr[i]);
+		i++;
 	}
-	free(s);
-	return (NULL);
+	free(ptr);
 }
 
 char	**fill(char **ptr, char *s, char c)
@@ -83,7 +84,7 @@ char	**fill(char **ptr, char *s, char c)
 				k++;
 			ptr[y] = mft_strdup((char *)s, i, k);
 			if (!ptr[y])
-				return (free_split(y, ptr), NULL);
+				return (free_split(ptr), NULL);
 			y++;
 			i = k;
 		}

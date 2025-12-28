@@ -25,14 +25,14 @@ void	pars_helper(char **ptr, t_stack *stack)
 			j++;
 		if (ptr[i][j] == '\0')
 		{
-			free_split(i, ptr);
+			free_split(ptr);
 			full_exit(stack);
 		}
 		while (ptr[i][j])
 		{
 			if (ptr[i][j] < '0' || ptr[i][j] > '9')
 			{
-				free_split(i, ptr);
+				free_split(ptr);
 				full_exit(stack);
 			}
 			j++;

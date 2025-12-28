@@ -52,7 +52,7 @@ void	sort_large(t_stack *A, t_stack *B);
 void	check_duplicates(t_stack *stack);
 void	fill_ptr(char **av, t_stack *A);
 void	full_exit(t_stack *stack);
-void	*free_split(int index, char **s);
+void	free_split(char **s);
 void	push_the_smallest_to_b(t_stack *A, t_stack *B, int pos);
 //opirations
 void	pa(t_stack *A, t_stack *B);

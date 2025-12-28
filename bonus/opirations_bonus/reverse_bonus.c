@@ -29,6 +29,7 @@ void	rra(t_stack *A)
 	A->head = last;
 	last->next = tmp;
 	last->prev = NULL;
+	tmp->prev = last;
 }
 
 void	rrb(t_stack *B)
@@ -48,6 +49,7 @@ void	rrb(t_stack *B)
 	B->head = last;
 	last->next = tmp;
 	last->prev = NULL;
+	tmp->prev = last;
 }
 
 void	rrr(t_stack *A, t_stack *B)
